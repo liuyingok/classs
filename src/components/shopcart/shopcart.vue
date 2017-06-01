@@ -8,7 +8,7 @@
           </div>
           <div class="num" v-show="numShow" >0</div>
         </div>
-        <div class="price">￥</div>
+        <div class="price">￥{{totalPrice}}</div>
         <div class="desc">另需配送费￥{{deliveryPrice}}元</div>
       </div>
       <div class="content-right">
@@ -22,6 +22,17 @@
 <script type="text/ecmascript-6">
   export default{
     props: {
+      selectFoods: {
+        type: Array,
+        default() {
+          return [
+            {
+              price: 10,
+              count: 8
+            }
+          ];
+        }
+      },
       deliveryPrice: {
         type: Number,
         default: 0
@@ -37,6 +48,22 @@
       };
     },
     methods: {
+    },
+    computed: {
+      totalPrice() {
+        let total = 0;
+        this.selectFoods.forEach((food) => {
+          total += food.price * food.count;
+        });
+        return total;
+      },
+      totalCount() {
+        let count = 0;
+        this.selectFoods.forEach((food) => {
+          count += food.count;
+        });
+        return count;
+      }
     }
   };
 </script>
@@ -81,8 +108,20 @@
               line-height: 44px
               font-size: 24px
               color: #80858a
-
-
+          .num
+            position: absolute
+            top: 0
+            right: 0
+            width: 24px
+            height: 16px
+            line-height: 16px
+            text-align: center
+            border-radius: 16px
+            font-size: 9px
+            font-weight: 700
+            color: #fff
+            background: #f01414
+            box-shadow: 0 4px 8px 0 rgba(0,0,0,0.4)
         .price
           display: inline-block
           vertical-align: top
