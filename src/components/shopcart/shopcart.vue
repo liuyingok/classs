@@ -9,12 +9,28 @@
           <div class="num" v-show="numShow" >0</div>
         </div>
         <div class="price">￥</div>
+        <div class="desc">另需配送费￥{{deliveryPrice}}元</div>
+      </div>
+      <div class="content-right">
+        <div class="pay not-enough">
+          ￥{{minPrice}}元起送
+        </div>
       </div>
     </div>
   </div>
 </template>
 <script type="text/ecmascript-6">
   export default{
+    props: {
+      deliveryPrice: {
+        type: Number,
+        default: 0
+      },
+      minPrice: {
+        type: Number,
+        default: 0
+      }
+    },
     data () {
       return {
         numShow: false
@@ -77,4 +93,23 @@
           border-right: 1px solid rgba(255,255,255,0.1)
           font-size: 16px
           font-weight: 700
+        .desc
+          display: inline-block
+          vertical-align: top
+          margin: 12px 0 0 12px
+          line-height: 24px
+          font-size: 10px
+      .content-right
+        -webkit-box-flex: 0
+        -ms-flex: 0 0 105px
+        flex: 0 0 105px
+        width: 105px
+        .pay
+          height: 48px
+          line-height: 48px
+          text-align: center
+          font-size: 12px
+          font-weight: 700
+          &.not-enough
+            background: #2b333b
 </style>
