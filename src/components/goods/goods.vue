@@ -111,7 +111,7 @@
         let height = 0;
         // 把第一个高度送入数组
         this.listHeight.push(height);
-        // 通过循环foodList下的dom结构，将每一个li的高度依次送入数组 试试
+        // 通过循环foodList下的dom结构，将每一个li的高度依次送入数组 试试哈
         for (let i = 0; i < foodList.length; i++) {
           let item = foodList[i];
           height += item.clientHeight;
