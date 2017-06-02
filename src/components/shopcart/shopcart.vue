@@ -27,7 +27,7 @@
         default() {
           return [
             {
-              price: 7,
+              price: 70,
               count: 800
             }
           ];
