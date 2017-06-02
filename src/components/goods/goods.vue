@@ -31,10 +31,7 @@
                   <span class="old">￥{{food.oldPrice}}</span>
                 </div>
                 <div class="cartcontrol-wrapper">
-                  <div class="cartcontrol">
-                    <div class="cart-add icon-add_circle"></div>
-                  </div>
-
+                  <cartcontrol :food="food"></cartcontrol>
                 </div>
 
               </div>
@@ -52,6 +49,7 @@
 <script type="text/ecmascript-6">
   import BScroll from 'better-scroll';
   import shopcart from '../../components/shopcart/shopcart.vue';
+  import cartcontrol from '../../components/cartcontrol/cartcontrol.vue';
   const ERR_OK = 0;
   export default{
     props: {
@@ -97,8 +95,11 @@
     },
     methods: {
       _initScroll () {
-        this.meunScroll = new BScroll(this.$refs.menuWrapper, {});
+        this.meunScroll = new BScroll(this.$refs.menuWrapper, {
+          click: true
+        });
         this.foodsScroll = new BScroll(this.$refs.foodsWrapper, {
+          click: true,
           probeType: 3
         });
         // 设置监听滚动位置
@@ -121,7 +122,8 @@
       }
     },
     components: {
-      shopcart
+      shopcart,
+      cartcontrol
     }
   };
 </script>
@@ -242,13 +244,6 @@
             bottom: 12px
             position: absolute
             right: 0
-            .cartcontrol
-              font-size: 0
-              .cart-add
-                color: #00a0dc
-                display: inline-block
-                font-size: 24px
-                line-height: 24px
-                padding: 6px
+
 
 </style>
