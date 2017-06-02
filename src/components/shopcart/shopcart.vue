@@ -28,7 +28,7 @@
           return [
             {
               price: 7,
-              count: 8000
+              count: 800
             }
           ];
         }
