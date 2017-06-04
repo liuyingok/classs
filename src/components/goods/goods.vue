@@ -31,7 +31,7 @@
                   <span class="old">￥{{food.oldPrice}}</span>
                 </div>
                 <div class="cartcontrol-wrapper">
-                  <cartcontrol :food="food"></cartcontrol>
+                  <cartcontrol @event="getEvent" :food="food"></cartcontrol>
                 </div>
 
               </div>
@@ -43,7 +43,7 @@
       </ul>
 
     </div>
-    <shopcart :select-foods="selectFoods" :delivery-price ="seller.deliveryPrice" :min-price ="seller.minPrice"></shopcart >
+    <shopcart ref="shopcart" :select-foods="selectFoods" :delivery-price ="seller.deliveryPrice" :min-price ="seller.minPrice"></shopcart >
   </div>
 </template>
 <script type="text/ecmascript-6">
@@ -105,6 +105,11 @@
       });
     },
     methods: {
+      _drop (target) {
+        this.$nextTick(() => {
+          this.$refs.shopcart.drop(target);
+        });
+      },
       _initScroll () {
         this.meunScroll = new BScroll(this.$refs.menuWrapper, {
           click: true
@@ -130,6 +135,12 @@
           height += item.clientHeight;
           this.listHeight.push(height);
         }
+      },
+      getEvent(target) {
+        // 体验优化,异步执行下落动画
+        this.$nextTick(() => {
+          this.$refs.shopcart.drop(target);
+        });
       }
     },
     components: {

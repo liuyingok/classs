@@ -1,12 +1,12 @@
 <template>
   <div class="cartcontrol">
-    <transition name="move">
+    <transition name="drop">
       <div @click="decreaseCart" class="cart-decrease move-transition" v-show="food.count>0">
         <span class="inner icon-remove_circle_outline"></span>
       </div>
     </transition>
     <div class="cart-count" v-show="food.count>0">{{food.count}}</div>
-    <div class="cart-add icon-add_circle" @click="addCart"></div>
+    <div class="cart-add inner-hook icon-add_circle" @click="addCart"></div>
 
   </div>
 </template>
@@ -28,6 +28,7 @@
         } else {
           this.food.count++;
         }
+        this.$emit('event', event.target);
       },
       decreaseCart (event) {
         if (!event._constructed) {
