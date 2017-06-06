@@ -84,6 +84,7 @@
         return 0;
       },
       selectFoods () {
+        // foods会传入购物车组件中，作为购物车的数据来源
         let foods = [];
         this.goods.forEach((good) => {
           good.foods.forEach((food) => {
