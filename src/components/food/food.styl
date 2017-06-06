@@ -1,0 +1,90 @@
+.food
+  background: #fff
+  bottom: 48px
+  left: 0
+  position: fixed
+  top: 0
+  width: 100%
+  z-index: 30
+  &.move-enter-active, &.move-leave-active
+    transition: all 0.2s linear
+  &.move-enter, &.move-leave-active
+    transform: translate3d(100%, 0, 0)
+  .image-header
+    height: 0
+    padding-top: 100%
+    position: relative
+    width: 100%
+    img
+      height: 100%
+      left: 0
+      position: absolute
+      top: 0
+      width: 100%
+    .back
+      left: 0
+      position: absolute
+      top: 10px
+      .icon-arrow_lift
+        color: #fff
+        display: block
+        font-size: 20px
+        padding: 10px
+
+
+
+  .content
+    padding: 18px
+    position: relative
+    .title
+      color: #07111b
+      font-size: 14px
+      font-weight: 700
+      line-height: 14px
+      margin-bottom: 8px
+    .detail
+      font-size: 0
+      height: 10px
+      line-height: 10px
+      margin-bottom: 18px
+      .sell-count,.rating
+        color: #93999f
+        font-size: 10px
+      .rating
+        padding-top: 18px;
+    .price
+      font-weight: 700
+      line-height: 24px;
+      .now
+        color: #f01414;
+        font-size: 14px;
+        margin-right: 8px;
+      .old
+        color: #93999f
+        font-size: 10px
+        text-decoration: line-through
+    .cartcontrol-wrapper
+       bottom: 12px
+       position: absolute
+       right: 12px
+    .buy
+      background: #00a0dc
+      border-radius: 12px
+      bottom: 18px
+      box-sizing: border-box
+      color: #fff
+      font-size: 10px
+      height: 24px
+      line-height: 24px
+      padding: 0 12px
+      position: absolute
+      right: 18px
+      z-index: 10
+  .split
+    background: #f3f5f7
+    border-bottom: 1px solid rgba(7, 17, 27, 0.1)
+    border-top: 1px solid rgba(7, 17, 27, 0.1)
+    height: 16px
+    width: 100%
+   .info
+     padding: 18px
