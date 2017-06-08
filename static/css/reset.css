@@ -57,6 +57,9 @@ a {
 li {
     list-style: none;
 }
+i,em{
+    font-style:normal;
+}
 
 ::-webkit-scrollbar {
     width: 5px;
