@@ -35,6 +35,21 @@
                   <h1 class="title">商品评价</h1>
                 <ratingselect :desc="desc" :ratings="food.ratings" :selectType="selectType" :onlyContent="onlyContent"
                   @selecttype="setType" @content="setOnlycontent"></ratingselect>
+                    <div class="rating-wrapper">
+                        <ul v-show="food.ratings && food.ratings.length">
+                            <li v-show="needShow(rating.rateType,rating.text)" class="rating-item border-1px" v-for="rating in food.ratings">
+                                <div class="user">
+                                    <span class="name">{{rating.username}}</span>
+                                    <img :src="rating.avatar"  width="12" height="12" alt=""  class="avatar">
+                                </div>
+                                <div class="time">{{rating.rateTime | formatDate}}</div>
+                                <p class="text">
+                                    <span :class="{'icon-thumb_up':rating.rateType===0,'icon-thumb_down':rating.rateType===1}">{{rating.text}}</span>
+                                </p>
+                            </li>
+                        </ul>
+                        <div class="no-rating" v-show="!food.ratings || !food.ratings.length">暂无评价</div>
+                    </div>
                 </div>
             </div>
 
@@ -47,6 +62,7 @@
   import cartcontrol from '../../components/cartcontrol/cartcontrol.vue';
   import split from '../../components/split/split.vue';
   import ratingselect from '../../components/ratingselect/ratingselect.vue';
+  import {formatDate} from '../../common/js/date.js';
   const ALL = 2;
     export default {
       props: {
@@ -104,6 +120,22 @@
           }
           this.$emit('add', event.target);
           Vue.set(this.food, 'count', 1);
+        },
+        needShow(type, text) {
+          if (this.onlyContent && !text) {
+            return false;
+          }
+          if (this.selectType === ALL) {
+            return true;
+          } else {
+            return type === this.selectType;
+          }
+        }
+      },
+      filters: {
+        formatDate(time) {
+          let date = new Date(time);
+          return formatDate(date, 'yyyy-MM-dd hh:mm');
         }
       },
       components: {

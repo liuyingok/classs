@@ -1,3 +1,4 @@
+@import "../../common/sytlus/mixin.styl"
 .food
   background: #fff
   bottom: 48px
@@ -109,3 +110,44 @@
       margin-left: 18px
       font-size: 14px
       color: #07111b
+    .rating-wrapper
+      padding: 0 18px
+      .rating-item
+        padding: 16px 0
+        position: relative
+        border-top: 1px solid rgba(7, 17, 27, 0.1)
+        .user
+          font-size: 0
+          line-height: 12px
+          position: absolute
+          right: 0
+          top: 16px
+          .name
+            color: #93999f
+            display: inline-block
+            font-size: 10px
+            margin-right: 6px
+            vertical-align: top
+          .avatar
+            border-radius: 50%;
+        .time
+          color: #93999f
+          font-size: 10px
+          line-height: 12px
+          margin-bottom: 6px
+        .text
+          color: #07111b
+          font-size: 12px
+          line-height: 16px
+          .icon-thumb_up, .icon-thumb_down
+            margin-right: 4px
+            line-height: 16px
+            font-size: 12px
+          .icon-thumb_up
+            color: #00a0dc
+          .icon-thumb_down
+            color: #93999f
+      .no-rating
+        color: #93999f
+        font-size: 12px
+        padding: 16px 0
