@@ -1,1 +1,83 @@
 @import "../../common/sytlus/mixin.styl"
+.seller
+  bottom: 0
+  left: 0
+  overflow: hidden
+  position: absolute
+  top: 174px
+  width: 100%
+  .overview
+    position: relative
+    padding: 18px
+    .title
+      margin-bottom: 8px
+      line-height: 14px
+      color: rgb(7, 17, 27)
+      font-size: 14px
+    .desc
+      padding-bottom: 18px
+      border-1px(rgba(7, 17, 27, 0.1))
+      font-size: 0
+      .star
+        display: inline-block
+        margin-right: 8px
+        vertical-align: top
+      .text
+        display: inline-block
+        margin-right: 12px
+        line-height: 18px
+        vertical-align: top
+        font-size: 10px
+        color: rgb(77, 85, 93)
+    .remark
+      display: flex
+      padding-top: 18px
+      .block
+        border-right: 1px solid rgba(7, 17, 27, 0.1)
+        flex: 1 1 0
+        text-align: center
+        &:last-child
+          border: none
+        h1
+          color: #93999f
+          font-size: 10px
+          line-height: 10px
+          margin-bottom: 4px
+        .content
+          color: #07111b
+          font-size: 10px
+          line-height: 24px
+          .stress
+            font-size: 24px;
+    .favorite
+      position: absolute
+      right: 11px
+      text-align: center
+      top: 18px
+      width: 50px
+      .icon-favorite
+        color: #d4d6d9
+        display: block
+        font-size: 24px
+        line-height: 24px
+        margin-bottom: 4px
+        &.active
+          color: #f01414
+      .text
+        color: #4d555d
+        font-size: 10px
+        line-height: 10px
+  .bulletin
+    padding: 18px 18px 0
+    .title
+      color: #07111b
+      font-size: 14px
+      line-height: 14px
+      margin-bottom: 8px
+    .content-wrapper
+      padding: 0 12px 16px
+      position: relative
+      .content
+        color: #f01414
+        font-size: 12px
+        line-height: 24px
