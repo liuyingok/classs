@@ -14,25 +14,37 @@
       </div>
 
     </div>
-    <router-view :seller="seller"></router-view>
+    <div class="content">
+      <keep-alive>
+        <router-view :seller="seller"></router-view>
+      </keep-alive>
+    </div>
 
   </div>
 </template>
 <script type="text/ecmascript-6">
   import header from './components/header/header.vue';
+  import {urlParse} from './common/js/util.js';
   const ERR_OK = 0;
   export default{
     data () {
       return {
-        seller: {}
+        seller: {
+          id: (() => {
+            let queryParam = urlParse();
+            // console.log(queryParam);
+            return queryParam.id;
+          })()
+        }
       };
     },
     created () {
-      this.$http.get('/api/seller').then((response) => {
+      this.$http.get('/api/seller?id=' + this.seller.id).then((response) => {
         response = response.body;
        // console.log(response);
         if (response.errno === ERR_OK) {
-          this.seller = response.data;
+          // 给this.seller扩展属性，保留id属性
+          this.seller = Object.assign({}, this.seller, response.data);
          // console.log(this.seller);
         }
       });

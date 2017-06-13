@@ -33,6 +33,30 @@
         <div class="content-wrapper border-1px">
           <p class="content">{{seller.bulletin}}</p>
         </div>
+        <ul v-if="seller.supports" class="supports">
+          <li class="support-item border-1px" v-for="(item,index) in seller.supports">
+            <span class="icon" :class="classMap[seller.supports[index].type]"></span>
+            <span class="text">{{seller.supports[index].description}}</span>
+          </li>
+        </ul>
+      </div>
+      <split></split>
+      <div class="pics">
+        <h1 class="title">商家实景</h1>
+        <div class="pic-wrapper" ref="picWrapper">
+          <ul class="pic-list" ref="picList">
+            <li class="pic-item" v-for="pic in seller.pics">
+              <img :src="pic" width="120" height="90">
+            </li>
+          </ul>
+        </div>
+      </div>
+      <split></split>
+      <div class="info">
+        <h1 class="title border-1px">商家信息</h1>
+        <ul>
+          <li class="info-item" v-for="info in seller.infos">{{info}}</li>
+        </ul>
       </div>
     </div>
   </div>
@@ -61,8 +85,28 @@
         return this.favorite ? '已收藏' : '收藏';
       }
     },
+    created() {
+      this.classMap = ['decrease', 'discount', 'special', 'invoice', 'guarantee'];
+    },
+    watch: {
+      /*  watch监听seller这个数据，一旦seller数据发生变化，就立即调用seller内部定义的方法，这里是this._initScroll();
+       和this._initPics(); */
+      'seller'() {
+        this.$nextTick(() => {
+          this._initScroll();
+          this._initPics();
+        });
+      }
+    },
+    mounted() {
+      this.$nextTick(() => {
+        this._initScroll();
+        this._initPics();
+      });
+    },
     methods: {
       toggleFavorite(event) {
+       //  alert();
         // console.log(1);
         if (!event._constructed) {
           return;
